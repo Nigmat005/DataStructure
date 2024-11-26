@@ -1,4 +1,4 @@
-package LinkedList;
+package com.cydeo.LinkedList;
 
 public  class Node{
     int id;

@@ -1,6 +1,7 @@
-package Map;
+package com.cydeo.Map;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MapReview {
     //find first non-repeating in String

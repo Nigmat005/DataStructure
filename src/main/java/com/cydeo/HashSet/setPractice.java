@@ -1,4 +1,4 @@
-package HashSet;
+package com.cydeo.HashSet;
 
 import java.util.HashSet;
 import java.util.Locale;

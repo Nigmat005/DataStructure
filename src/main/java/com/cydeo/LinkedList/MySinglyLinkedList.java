@@ -1,7 +1,8 @@
-package LinkedList;
+package com.cydeo.LinkedList;
 
-import LinkedList.CustomeExceptions.ListEmptyException;
-import LinkedList.Enums.ExceptionsEnums;
+
+import com.cydeo.LinkedList.CustomeExceptions.ListEmptyException;
+import com.cydeo.LinkedList.Enums.ExceptionsEnums;
 
 public class MySinglyLinkedList {
     /*
@@ -37,17 +38,49 @@ public class MySinglyLinkedList {
 
     }
 
-    void addToFirst(Node node) {
-        if (isEmpty()) {
-            try {
+
+     void add(int index, Node node){
+        if(isEmpty()){
+            try{
                 throw new ListEmptyException(ExceptionsEnums.EMPTY_LIST);
             } catch (Exception e) {
-                System.out.println("Exception Caused: " + e.getMessage());
+                System.out.println("Exception Caused: "+e.getMessage());
             }
         }
+
         Node current=head;
-        head=node;
-        head.next=current;
+        Node prev=head;
+        if(index==0)
+            addToFirst(node);
+        else{
+            while (current!=null){
+                if(indexOf(current)==index){
+                    prev.next=node;
+                    node.next=current;
+                    size++;
+                    break;
+                }
+                prev=current;
+                current=current.next;
+            }
+        }
+
+
+
+
+
+
+    }
+    void addToFirst(Node node) {
+        if (isEmpty()) {
+            head=tail=node;
+            return;
+        }
+        else{
+            Node current=head;
+            head=node;
+            head.next=current;
+        }
         size++;
     }
 
@@ -67,7 +100,7 @@ public class MySinglyLinkedList {
             System.out.println(current.id+"=>");
             current=current.next;
         }
-        System.out.print("null");
+        System.out.println("null");
     }
 
     void deleteNode(int id){
@@ -146,8 +179,92 @@ public class MySinglyLinkedList {
         return -1;
     }
 
+
+    int indexOf(Node node) {
+        if (isEmpty()) {
+            try {
+                throw new ListEmptyException(ExceptionsEnums.EMPTY_LIST);
+            } catch (Exception e) {
+                System.out.println("Exception Caused: " + e.getMessage());
+            }
+            return -1;
+        }
+
+        // Iterate thru the list
+        // Always make current head to make sure it starts with head
+        Node current=head;
+        int pos=0;
+        while (current!=null){
+            if(current==node)
+                return pos;
+            pos++;
+            current=current.next;
+        }
+        return -1;
+    }
+
     int size(){
         return size;
     }
+
+
+    Node getNodeAtIndexOf(int index){
+        Node current=head;
+        if(index>this.size()-1){
+            return null;
+           // throw new IndexOutOfBoundsException();
+            }
+        else{
+                if(index==0)
+                    return head;
+                else if(index==size-1)
+                    return tail;
+                else{
+                    while(index > 0) {
+                        current = current.next;
+                        index--;
+                    }
+                    return current;
+                }
+            }
+        }
+
+    // HomeWork Part
+    // assume element is already in linked list
+    int getKthElement(int k){
+        int slowPointer=0;
+        int fastPointer=k;
+        if(k>=1){
+            while(this.getNodeAtIndexOf(fastPointer)!=null){
+                slowPointer++;
+                fastPointer++;
+            }
+            return this.getNodeAtIndexOf(slowPointer).id;
+        }
+        return -1;
+    }
+
+    int getKthItemFromLast(int k){
+       Node slowNode=head;
+       Node fastNode=head;
+       // first make sure the smallest item we can get from last is (something like 1, 2, 3... can not get 0th item from last, also k should be less than size otherwise fastNode would be
+        // pointing null already even before we try to locate it.)
+       if(k>0 && k<this.size()){
+
+           // need to locate what kth node would be for both slow and fast node.
+           for(int i=k; i>0;i--){
+               fastNode=fastNode.next;
+           }
+           // then need to use that fastNode to traverse till fastNode reaches null
+           while(fastNode!=null){
+              slowNode=slowNode.next;
+              fastNode=fastNode.next;
+           }
+           return slowNode.id;
+       }
+       return -1;
+    }
+
+
 
 }
