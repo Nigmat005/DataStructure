@@ -204,7 +204,7 @@ public class MySinglyLinkedList {
     }
 
     int size(){
-        return size;
+        return this.size;
     }
 
 
@@ -249,10 +249,10 @@ public class MySinglyLinkedList {
        Node fastNode=head;
        // first make sure the smallest item we can get from last is (something like 1, 2, 3... can not get 0th item from last, also k should be less than size otherwise fastNode would be
         // pointing null already even before we try to locate it.)
-       if(k>0 && k<this.size()){
+       if(k>0){
 
            // need to locate what kth node would be for both slow and fast node.
-           for(int i=k; i>0;i--){
+           for(int i=0; i<k;i++){
                fastNode=fastNode.next;
            }
            // then need to use that fastNode to traverse till fastNode reaches null
@@ -265,6 +265,36 @@ public class MySinglyLinkedList {
        return -1;
     }
 
+    void removeKthItemFromLast(int k){
+        Node prevNode=head;
+        Node nextNode=head;
+        Node slowNode=head;
+        Node fastNode=head;
+
+        // locate fastNode with kth index
+        for(int i=0; i<k;i++){
+           // if fastNode is already exceed index of linkedList,will delete head
+            if(fastNode==null){
+                head=head.next;
+                break;
+            }
+            fastNode=fastNode.next;
+        }
+
+        // traverse till fast node is null so that we can locate kth element from last by knowing what slowNode is
+            while(fastNode!=null){
+            prevNode=slowNode;
+            slowNode=slowNode.next;
+            nextNode=slowNode.next;
+            fastNode=fastNode.next;
+        }
+
+        // then break connect between prevNode with slowNode and creat connection with prevNode with nextNode by making prevNode.next=nextNode, also need to break slowNode.next to null
+        // so that slowNode would be ready for GC
+        prevNode.next=nextNode;
+        slowNode.next=null;
+        size--;
+    }
 
 
 }
