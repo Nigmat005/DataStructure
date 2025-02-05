@@ -1,4 +1,4 @@
-package com.cydeo.Map;
+package Map;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +49,7 @@ public class MapReview {
         map.put(5,"Jonathan");
         map.put(6,"Messi");
         map.put(7,"Ronaldo");
+//        System.out.println(map);
 
 //        for (Map.Entry<Integer,String> eachKey: map.entrySet()){
 //            System.out.println("Key is: "+eachKey.getKey()+" Value is: "+eachKey.getValue());

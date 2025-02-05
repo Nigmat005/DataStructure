@@ -1,4 +1,4 @@
-package com.cydeo.ArrayList;
+package ArrayList;
 
 public class Student {
     int id;

@@ -1,4 +1,4 @@
-package com.cydeo.LinkedList.Enums;
+package LinkedList.Enums;
 
 public enum ExceptionsEnums {
     EMPTY_LIST("EmptyListException","Caused because the list from which you are trying to delete node is empty !!!");

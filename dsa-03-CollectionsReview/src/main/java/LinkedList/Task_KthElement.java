@@ -1,4 +1,4 @@
-package com.cydeo.LinkedList;
+package LinkedList;
 
 public class Task_KthElement {
     public static void main(String[] args) {

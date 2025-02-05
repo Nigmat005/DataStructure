@@ -1,4 +1,4 @@
-package com.cydeo.CodePractice;
+package CodePractice;
 
 import java.util.Arrays;
 import java.util.HashSet;

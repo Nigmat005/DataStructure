@@ -1,8 +1,8 @@
-package com.cydeo.LinkedList;
+package LinkedList;
 
 
-import com.cydeo.LinkedList.CustomeExceptions.ListEmptyException;
-import com.cydeo.LinkedList.Enums.ExceptionsEnums;
+import LinkedList.CustomeExceptions.ListEmptyException;
+import LinkedList.Enums.ExceptionsEnums;
 
 public class MySinglyLinkedList {
     /*

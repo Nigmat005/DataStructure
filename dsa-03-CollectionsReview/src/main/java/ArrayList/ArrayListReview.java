@@ -1,4 +1,4 @@
-package com.cydeo.ArrayList;
+package ArrayList;
 
 import java.util.*;
 

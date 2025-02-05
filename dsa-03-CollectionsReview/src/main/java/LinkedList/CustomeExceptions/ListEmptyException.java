@@ -1,6 +1,7 @@
-package com.cydeo.LinkedList.CustomeExceptions;
+package LinkedList.CustomeExceptions;
 
-import com.cydeo.LinkedList.Enums.ExceptionsEnums;
+
+import LinkedList.Enums.ExceptionsEnums;
 
 public class ListEmptyException extends RuntimeException{
     public ListEmptyException(ExceptionsEnums exceptionsEnums){
